@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/ef80165f14af45eeb9400d7d3cfc5104/artifacts
+end_time: 1746293594440
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: ef80165f14af45eeb9400d7d3cfc5104
+run_name: thundering-ant-598
+run_uuid: ef80165f14af45eeb9400d7d3cfc5104
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746293544910
+status: 3
+tags: []
+user_id: sohair

@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/6f7094fbc5094536acde5455bd731b4b/artifacts
+end_time: 1746323797408
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 6f7094fbc5094536acde5455bd731b4b
+run_name: efficient-gull-500
+run_uuid: 6f7094fbc5094536acde5455bd731b4b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746323098454
+status: 3
+tags: []
+user_id: sohair

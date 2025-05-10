@@ -24,20 +24,12 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from tqdm import tqdm
+print("done")
+
 # sunucuda calismak icin
 plt.switch_backend('agg')
 
 from keras.models import model_from_json
-
-
-"""
-  floyd run --gpu2 --data ebubekir/datasets/phishing_detection/1:dataset --message "cnn complex model bs: 7000" "python dl_floyd.py -arch cnn -ep 20 -bs 7000"
-  floyd run --gpu2 --data ebubekir/datasets/phishing_detection/1:dataset --message "rnn complex model bs: 7000" "python dl_floyd.py -arch rnn -ep 20 -bs 7000"
-  floyd run --gpu2 --data ebubekir/datasets/phishing_detection/1:dataset --message "brnn complex model bs: 7000" "python dl_floyd.py -arch brnn -ep 20 -bs 7000"
-  floyd run --gpu2 --data ebubekir/datasets/phishing_detection/1:dataset --message "ann complex model bs: 7000" "python dl_floyd.py -arch ann -ep 20 -bs 7000"
-  floyd run --gpu2 --data ebubekir/datasets/phishing_detection/1:dataset --message "att complex model bs: 7000" "python dl_floyd.py -arch att -ep 20 -bs 5000"
-"""
-
 
 pp = pprint.PrettyPrinter(indent=4)
 
@@ -46,11 +38,9 @@ TEST_RESULTS = {'data': {},
                 "hiperparameter": {},
                 "test_result": {}}
 
-
 class PhishingUrlDetection:
 
     def __init__(self):
-
         self.params = {'loss_function': 'binary_crossentropy',
                        'optimizer': 'adam',
                        'sequence_length': 200,
@@ -61,9 +51,9 @@ class PhishingUrlDetection:
                        'epoch': 30,
                        'embedding_dimension': 50,
                        'architecture': "cnn",
-                       'result_dir': "/output/",
-                       'dataset_dir': "../dataset/small_dataset/",
-                       'char_embeddings': "../test_results/complex_cnn/cnn_complex_1/char_embeddings.json"}
+                       'result_dir': "/mnt/c/Users/dell/PycharmProjects/pro/test_results/",
+                       'dataset_dir': "/mnt/c/Users/dell/PycharmProjects/pro/dataset/small_dataset/",
+                       'char_embeddings': "/mnt/c/Users/dell/PycharmProjects/pro/test_results/char_embeddings.json"}
 
         self.ml_plotter = Plotter()
         self.dl_models = DlModels(self.params['categories'], self.params['embedding_dimension'], self.params['sequence_length'])
@@ -353,9 +343,6 @@ class PhishingUrlDetection:
             model = self.dl_models.cnn_complex3(self.params['char_index'])
             TEST_RESULTS['hiperparameter']['architecture'] = "cnn"
 
-
-        # Build Deep Learning Architecture
-
         model.compile(loss=self.params['loss_function'], optimizer=self.params['optimizer'], metrics=['accuracy'])
 
         model.summary()
@@ -383,8 +370,6 @@ class PhishingUrlDetection:
         TEST_RESULTS['test_result']['test_loss'] = score
 
         test_confusion_matrix = confusion_matrix(y_test, y_pred)
-        #TEST_RESULTS['test_result']['y_test'] = y_test
-        #TEST_RESULTS['test_result']['y_prediction'] = y_predicted
         TEST_RESULTS['test_result']['test_confusion_matrix'] = test_confusion_matrix.tolist()
 
         print('Test loss: {0}  |  test accuracy: {1}'.format(score, acc))
@@ -439,7 +424,6 @@ class PhishingUrlDetection:
         model_prediction_test = model.predict(x_test)
         TEST_RESULTS['test_duration'] = time.time() - st
 
-        # model_probability = model.predict_proba(x_val)
         acc_val = accuracy_score(y_val, model_prediction_val)
         acc_test = accuracy_score(y_test, model_prediction_test)
 
@@ -505,7 +489,6 @@ class PhishingUrlDetection:
         words_embeddings = {w: embeddings[idx].tolist() for w, idx in self.params['char_index'].items()}
         open("{0}char_embeddings.json".format(self.params['result_dir']), "w").write(json.dumps(words_embeddings))
 
-
 class CustomCallBack(ckbs.Callback):
 
     def __init__(self):
@@ -517,7 +500,6 @@ class CustomCallBack(ckbs.Callback):
 
     def on_epoch_end(self, epoch, logs=None):
         TEST_RESULTS['epoch_times'].append(time.time() - self.epoch_time_start)
-
 
 class Plotter:
 
@@ -596,7 +578,6 @@ class Plotter:
             else:
                 plt.savefig("{0}.png".format(save_to))
 
-
 def argument_parsing():
     parser = argparse.ArgumentParser()
     parser.add_argument("-ep", "--epoch", default=10, help='The number of epoch')
@@ -608,19 +589,13 @@ def argument_parsing():
 
     return args
 
-
 def main():
-
     args = argument_parsing()
     vc = PhishingUrlDetection()
     vc.set_params(args)
 
-    # (x_train, y_train), (x_val, y_val), (x_test, y_test) = vc.load_and_vectorize_data()
-    # vc.dl_algorithm(x_train, y_train, x_val, y_val, x_test, y_test)
-
-    #(x_train, y_train), (x_val, y_val), (x_test, y_test) = vc.load_and_vectorize_data_for_ml2()
-    vc.traditional_ml(args.architecture)
-
+    (x_train, y_train), (x_val, y_val), (x_test, y_test) = vc.load_and_vectorize_data()
+    vc.dl_algorithm(x_train, y_train, x_val, y_val, x_test, y_test)
 
 if __name__ == '__main__':
     main()

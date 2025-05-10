@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/c86b041856694dda992e474ebbeb092d/artifacts
+end_time: 1746308913568
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: c86b041856694dda992e474ebbeb092d
+run_name: delicate-hog-133
+run_uuid: c86b041856694dda992e474ebbeb092d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746308386741
+status: 3
+tags: []
+user_id: sohair

@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/1a05dfef200c479b95d327230458b3df/artifacts
+end_time: 1746313550468
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 1a05dfef200c479b95d327230458b3df
+run_name: vaunted-hound-283
+run_uuid: 1a05dfef200c479b95d327230458b3df
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746313456210
+status: 3
+tags: []
+user_id: sohair

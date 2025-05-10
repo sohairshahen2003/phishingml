@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/2d2f5dcb22bb4b9bb6408e3c8b5d20ff/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 2d2f5dcb22bb4b9bb6408e3c8b5d20ff
+run_name: wise-pug-624
+run_uuid: 2d2f5dcb22bb4b9bb6408e3c8b5d20ff
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746281933223
+status: 1
+tags: []
+user_id: sohair

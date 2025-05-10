@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/d2a22d97bde2416bab89b2655db0e558/artifacts
+end_time: 1746322688700
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: d2a22d97bde2416bab89b2655db0e558
+run_name: vaunted-elk-210
+run_uuid: d2a22d97bde2416bab89b2655db0e558
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746319836383
+status: 3
+tags: []
+user_id: sohair

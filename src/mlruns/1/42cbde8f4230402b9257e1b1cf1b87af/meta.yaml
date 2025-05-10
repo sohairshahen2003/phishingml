@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/42cbde8f4230402b9257e1b1cf1b87af/artifacts
+end_time: 1746384202008
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 42cbde8f4230402b9257e1b1cf1b87af
+run_name: judicious-snail-248
+run_uuid: 42cbde8f4230402b9257e1b1cf1b87af
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746372234301
+status: 3
+tags: []
+user_id: sohair

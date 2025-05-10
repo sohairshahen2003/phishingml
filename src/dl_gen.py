@@ -22,6 +22,7 @@ from tensorflow import keras
 from utils import Utils, Plotter, PhishingDataGen
 import tensorflow as tf
 from keras import backend as K
+print("done")
 
 # sunucuda calismak icin
 plt.switch_backend('agg')
@@ -30,8 +31,7 @@ pp = pprint.PrettyPrinter(indent=4)
 
 class PhishingUrlDetection:
 
-    def __init__(self, epoch):
-
+    def __init__(self, epoch, architecture):
         self.params = {'optimizer': 'adam',
                        'sequence_length': 512,
                        'batch_train': 5000,
@@ -40,21 +40,22 @@ class PhishingUrlDetection:
                        'char_index': None,
                        'epoch': epoch,
                        'embedding_dimension': 100,
-                       'result_dir': "../result/",
-                       'dataset_dir': "../dataset/big_dataset",
-                       "train_dir": "../dataset/big_dataset/train",
-                       "test_dir": "../dataset/big_dataset/test",
-                       "val_dir": "../dataset/big_dataset/val",
+                       'architecture': architecture,
+                       'result_dir': "/mnt/c/Users/dell/PycharmProjects/pro/test_results/",
+                       'dataset_dir': "/mnt/c/Users/dell/PycharmProjects/pro/dataset/small_dataset",
+                       "train_dir": "/mnt/c/Users/dell/PycharmProjects/pro/dataset/small_dataset/train",
+                       "test_dir": "/mnt/c/Users/dell/PycharmProjects/pro/dataset/small_dataset/test",
+                       "val_dir": "/mnt/c/Users/dell/PycharmProjects/pro/dataset/small_dataset/val",
                        }
 
         accepted_chars = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]\\^_`abcdefghijklmnopqrstuvwxyz{|}~"
 
         self.tokener = Tokenizer(lower=True, char_level=True, oov_token='-n-')
-        self.tokener.word_index = json.loads(open("../dataset/char_index").read())
+        self.tokener.word_index = json.loads(open("/mnt/c/Users/dell/PycharmProjects/pro/dataset/char_index.json").read())
         self.utils = Utils()
 
         if not os.path.exists(self.params['result_dir']):
-            os.mkdir(self.params['result_dir'])
+            os.makedirs(self.params['result_dir'])
             print("Directory ", self.params['result_dir'], " Created ")
         else:
             print("Directory ", self.params['result_dir'], " already exists")
@@ -65,7 +66,6 @@ class PhishingUrlDetection:
                                   self.params['sequence_length'])
 
     def dl_val(self, model, test_gen):
-
         accs = []
         y_true_all = []
         y_pred_all = []
@@ -74,7 +74,6 @@ class PhishingUrlDetection:
             x = data[0]  # vec
             y = data[1]  # label
 
-            # y_pred = model.predict_on_batch(x)
             y_pred = model.predict(x)
             y_pred = np.where(np.asanyarray(y_pred) > 0.5, 1, 0)
 
@@ -91,7 +90,6 @@ class PhishingUrlDetection:
         return round(custom_acc, 4), report, conf_matrix, time.time() - t
 
     def dl_algorithm(self):
-
         TEST_RESULTS = {'data': {"train_gen": 0, "test_gen": 0},
                         "custom_acc": None,
                         "train_duration": None,
@@ -111,9 +109,19 @@ class PhishingUrlDetection:
 
         print("train_gen: {} - test_gen: {} - val_gen: {}".format(len(train_gen), len(test_gen), len(val_gen)))
 
-        model = self.dl_models.cnn_complex3(self.tokener.word_index)
-        mlflow.log_param('architecture', "cnn3")
         # Build Deep Learning Architecture
+        if self.params['architecture'] == "ann":
+            model = self.dl_models.ann_complex(self.tokener.word_index)
+            mlflow.log_param('architecture', "ann")
+        elif self.params['architecture'] == "cnn":
+            model = self.dl_models.cnn_complex(self.tokener.word_index)
+            mlflow.log_param('architecture', "cnn")
+        elif self.params['architecture'] == "rnn":
+            model = self.dl_models.rnn_complex(self.tokener.word_index)
+            mlflow.log_param('architecture', "rnn")
+        else:
+            model = self.dl_models.cnn_complex3(self.tokener.word_index)
+            mlflow.log_param('architecture', "cnn3")
 
         model.compile(loss="binary_crossentropy", optimizer=self.params['optimizer'], metrics=['accuracy'])
 
@@ -132,8 +140,8 @@ class PhishingUrlDetection:
             t = time.time()
 
             for j, data in enumerate(train_gen):
-                x = data[0] #vec
-                y = data[1] #label
+                x = data[0]  # vec
+                y = data[1]  # label
 
                 res = model.train_on_batch(x=x, y=y, reset_metrics=False)
 
@@ -153,25 +161,12 @@ class PhishingUrlDetection:
         TEST_RESULTS["train_duration"] = time.time() - start
         test_custom_acc, test_report, test_conf_matrix, test_duration = self.dl_val(model, test_gen)
 
-        #tf.saved_model.save(model, "{}ph_model".format(self.params["result_dir"]))
-        subprocess.call("rm -fr ../result/ph_model", shell=True)
+        subprocess.call("rm -fr /mnt/c/Users/dell/PycharmProjects/pro/test_results/ph_model", shell=True)
         tf.keras.models.save_model(model, "{}ph_model".format(self.params["result_dir"]))
-
-        """keras.models.save_model(
-            model,
-            "{}ph_model".format(self.params["result_dir"]),
-            overwrite=True,
-            include_optimizer=True,
-            save_format=None,
-            signatures=None,
-            options=None
-        )"""
 
         self.utils.save_results(self.params, test_custom_acc, TEST_RESULTS, test_conf_matrix, test_report, self.params["result_dir"])
 
     def test_model(self):
-
-        #model = tf.saved_model.load(export_dir="{}/saved_model".format(self.params["result_dir"]), tags="serve")
         model = keras.models.load_model("{}ph_model".format(self.params["result_dir"]))
         print("model read")
         urls = ["gobyexample.com/login/ender/phishing_url_detection/merge_requests/new?merge_request",
@@ -181,9 +176,6 @@ class PhishingUrlDetection:
                 "gitlab.roksit.com/ender/phishing_url_detection/merge_requests/new?merge_request%5Bsource_branch%5D=dev"] * 20000
 
         print("data loading")
-        #data = self.rks.get_all_data_paralel({"query": {"match_all": {}}, "size": 10000}, "phishing_urls_v02", es, part=10)
-        print("data loaded")
-        #urls = [sample["_source"]["url"] for sample in data]
         vec = self.tokener.texts_to_sequences(urls)
         vec = sequence.pad_sequences(vec, maxlen=512)
         print(vec.shape)
@@ -191,11 +183,9 @@ class PhishingUrlDetection:
 
         res = model.predict(vec)
         for i, line in enumerate(res):
-            #print("{} - {}".format(round(float(line[0]), 4), urls[i]))
             pass
 
-        print("time: {} sn".format(time.time()- t))
-
+        print("time: {} sn".format(time.time() - t))
 
 def argument_parsing():
     parser = argparse.ArgumentParser()
@@ -208,11 +198,9 @@ def argument_parsing():
 
     return args
 
-
 def main():
-
     args = argument_parsing()
-    vc = PhishingUrlDetection(args.epoch)
+    vc = PhishingUrlDetection(args.epoch, args.architecture)
 
     if args.test:
         vc.test_model()
@@ -220,7 +208,6 @@ def main():
         mlflow.start_run(experiment_id=1)
         vc.dl_algorithm()
         mlflow.end_run()
-
 
 if __name__ == '__main__':
     main()

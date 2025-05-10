@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/e898e1e3a5b8448ea654f31c61ffe291/artifacts
+end_time: 1746323005813
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: e898e1e3a5b8448ea654f31c61ffe291
+run_name: masked-ox-671
+run_uuid: e898e1e3a5b8448ea654f31c61ffe291
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746319181484
+status: 3
+tags: []
+user_id: sohair

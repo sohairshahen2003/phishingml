@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/788bd73756a746fda8005416ad05003e/artifacts
+end_time: 1746279723483
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 788bd73756a746fda8005416ad05003e
+run_name: gentle-quail-694
+run_uuid: 788bd73756a746fda8005416ad05003e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746279721419
+status: 3
+tags: []
+user_id: sohair

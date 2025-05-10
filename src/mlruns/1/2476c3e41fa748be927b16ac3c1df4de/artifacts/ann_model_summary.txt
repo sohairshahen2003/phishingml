@@ -1,0 +1,29 @@
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ embedding (Embedding)       (None, 200, 100)          7100      
+                                                                 
+ dense (Dense)               (None, 200, 128)          12928     
+                                                                 
+ dense_1 (Dense)             (None, 200, 128)          16512     
+                                                                 
+ dense_2 (Dense)             (None, 200, 128)          16512     
+                                                                 
+ dense_3 (Dense)             (None, 200, 128)          16512     
+                                                                 
+ dense_4 (Dense)             (None, 200, 128)          16512     
+                                                                 
+ dense_5 (Dense)             (None, 200, 128)          16512     
+                                                                 
+ dense_6 (Dense)             (None, 200, 128)          16512     
+                                                                 
+ flatten (Flatten)           (None, 25600)             0         
+                                                                 
+ dense_7 (Dense)             (None, 2)                 51202     
+                                                                 
+=================================================================
+Total params: 170,302
+Trainable params: 170,302
+Non-trainable params: 0
+_________________________________________________________________

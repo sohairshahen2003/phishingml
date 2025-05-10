@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/a1ffda43e40c481cac45fa6cb4b8c703/artifacts
+end_time: 1746372106723
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: a1ffda43e40c481cac45fa6cb4b8c703
+run_name: clean-zebra-573
+run_uuid: a1ffda43e40c481cac45fa6cb4b8c703
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746370807609
+status: 3
+tags: []
+user_id: sohair

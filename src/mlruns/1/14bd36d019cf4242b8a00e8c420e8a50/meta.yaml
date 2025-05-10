@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/14bd36d019cf4242b8a00e8c420e8a50/artifacts
+end_time: 1746370414115
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 14bd36d019cf4242b8a00e8c420e8a50
+run_name: clumsy-stoat-165
+run_uuid: 14bd36d019cf4242b8a00e8c420e8a50
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746366167286
+status: 3
+tags: []
+user_id: sohair

@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/9edc47071c8948e1b4cabb960dac994a/artifacts
+end_time: 1746287892261
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 9edc47071c8948e1b4cabb960dac994a
+run_name: chill-moth-998
+run_uuid: 9edc47071c8948e1b4cabb960dac994a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746287144824
+status: 3
+tags: []
+user_id: sohair

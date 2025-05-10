@@ -1,0 +1,27 @@
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ embedding (Embedding)       (None, None, 100)         7100      
+                                                                 
+ lstm (LSTM)                 (None, None, 128)         117248    
+                                                                 
+ lstm_1 (LSTM)               (None, None, 128)         131584    
+                                                                 
+ lstm_2 (LSTM)               (None, None, 128)         131584    
+                                                                 
+ lstm_3 (LSTM)               (None, None, 128)         131584    
+                                                                 
+ lstm_4 (LSTM)               (None, None, 128)         131584    
+                                                                 
+ lstm_5 (LSTM)               (None, None, 128)         131584    
+                                                                 
+ lstm_6 (LSTM)               (None, 128)               131584    
+                                                                 
+ dense (Dense)               (None, 2)                 258       
+                                                                 
+=================================================================
+Total params: 914,110
+Trainable params: 914,110
+Non-trainable params: 0
+_________________________________________________________________

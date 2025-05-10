@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/2476c3e41fa748be927b16ac3c1df4de/artifacts
+end_time: 1746307572293
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 2476c3e41fa748be927b16ac3c1df4de
+run_name: stylish-crane-771
+run_uuid: 2476c3e41fa748be927b16ac3c1df4de
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746304960557
+status: 3
+tags: []
+user_id: sohair

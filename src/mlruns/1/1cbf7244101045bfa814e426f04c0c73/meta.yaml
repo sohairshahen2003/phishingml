@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/1cbf7244101045bfa814e426f04c0c73/artifacts
+end_time: 1746365289036
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 1cbf7244101045bfa814e426f04c0c73
+run_name: puzzled-wolf-721
+run_uuid: 1cbf7244101045bfa814e426f04c0c73
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746362646570
+status: 3
+tags: []
+user_id: sohair

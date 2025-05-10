@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/6edb978cbcdb47f3a90a02f31ac63acf/artifacts
+end_time: 1746300594360
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 6edb978cbcdb47f3a90a02f31ac63acf
+run_name: silent-smelt-312
+run_uuid: 6edb978cbcdb47f3a90a02f31ac63acf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746300016418
+status: 3
+tags: []
+user_id: sohair

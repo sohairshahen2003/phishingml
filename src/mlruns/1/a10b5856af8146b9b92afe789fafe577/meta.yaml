@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/a10b5856af8146b9b92afe789fafe577/artifacts
+end_time: 1746299844290
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: a10b5856af8146b9b92afe789fafe577
+run_name: caring-gnat-722
+run_uuid: a10b5856af8146b9b92afe789fafe577
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746294845923
+status: 3
+tags: []
+user_id: sohair

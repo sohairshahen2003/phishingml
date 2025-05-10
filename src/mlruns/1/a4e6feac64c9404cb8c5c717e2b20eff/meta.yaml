@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/a4e6feac64c9404cb8c5c717e2b20eff/artifacts
+end_time: 1746308019772
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: a4e6feac64c9404cb8c5c717e2b20eff
+run_name: inquisitive-quail-97
+run_uuid: a4e6feac64c9404cb8c5c717e2b20eff
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746308019436
+status: 3
+tags: []
+user_id: sohair

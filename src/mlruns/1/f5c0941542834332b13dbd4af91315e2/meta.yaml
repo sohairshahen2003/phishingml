@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/dell/PycharmProjects/pro/src/mlruns/1/f5c0941542834332b13dbd4af91315e2/artifacts
+end_time: 1746293020029
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: f5c0941542834332b13dbd4af91315e2
+run_name: delicate-lark-216
+run_uuid: f5c0941542834332b13dbd4af91315e2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746287941086
+status: 3
+tags: []
+user_id: sohair

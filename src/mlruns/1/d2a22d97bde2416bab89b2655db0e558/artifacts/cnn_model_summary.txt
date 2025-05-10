@@ -1,0 +1,55 @@
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ embedding (Embedding)       (None, 200, 100)          7100      
+                                                                 
+ conv1d (Conv1D)             (None, 198, 128)          38528     
+                                                                 
+ max_pooling1d (MaxPooling1D  (None, 66, 128)          0         
+ )                                                               
+                                                                 
+ dropout (Dropout)           (None, 66, 128)           0         
+                                                                 
+ conv1d_1 (Conv1D)           (None, 66, 128)           114816    
+                                                                 
+ dropout_1 (Dropout)         (None, 66, 128)           0         
+                                                                 
+ conv1d_2 (Conv1D)           (None, 66, 128)           82048     
+                                                                 
+ dropout_2 (Dropout)         (None, 66, 128)           0         
+                                                                 
+ conv1d_3 (Conv1D)           (None, 66, 128)           49280     
+                                                                 
+ max_pooling1d_1 (MaxPooling  (None, 22, 128)          0         
+ 1D)                                                             
+                                                                 
+ dropout_3 (Dropout)         (None, 22, 128)           0         
+                                                                 
+ conv1d_4 (Conv1D)           (None, 22, 128)           82048     
+                                                                 
+ dropout_4 (Dropout)         (None, 22, 128)           0         
+                                                                 
+ conv1d_5 (Conv1D)           (None, 22, 128)           49280     
+                                                                 
+ max_pooling1d_2 (MaxPooling  (None, 7, 128)           0         
+ 1D)                                                             
+                                                                 
+ dropout_5 (Dropout)         (None, 7, 128)            0         
+                                                                 
+ conv1d_6 (Conv1D)           (None, 7, 128)            49280     
+                                                                 
+ max_pooling1d_3 (MaxPooling  (None, 2, 128)           0         
+ 1D)                                                             
+                                                                 
+ dropout_6 (Dropout)         (None, 2, 128)            0         
+                                                                 
+ flatten (Flatten)           (None, 256)               0         
+                                                                 
+ dense (Dense)               (None, 2)                 514       
+                                                                 
+=================================================================
+Total params: 472,894
+Trainable params: 472,894
+Non-trainable params: 0
+_________________________________________________________________

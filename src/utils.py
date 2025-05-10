@@ -19,7 +19,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 from keras.preprocessing.text import Tokenizer
-
+print("done")
 
 class PhishingDataGen(keras.utils.Sequence):
 
@@ -29,7 +29,7 @@ class PhishingDataGen(keras.utils.Sequence):
         accepted_chars = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]\\^_`abcdefghijklmnopqrstuvwxyz{|}~"
 
         self.tokener = Tokenizer(lower=True, char_level=True, oov_token='-n-')
-        self.tokener.word_index = json.loads(open("../dataset/char_index").read())
+        self.tokener.word_index = json.loads(open("/mnt/c/Users/dell/PycharmProjects/pro/dataset/char_index.json").read())
 
     def __len__(self):
         return (np.ceil(len(self.filenames) / float(self.batch_size))).astype(np.int)
@@ -39,7 +39,6 @@ class PhishingDataGen(keras.utils.Sequence):
         urls = []
         labels = []
         for file in batch_x:
-
             data = subprocess.check_output("cat {}".format(file), shell=True).decode("utf-8").split("\n")
 
             while '' in data:
@@ -88,16 +87,12 @@ class Plotter:
         plt.close()
 
     def plot_confusion_matrix(self, confusion_matrix, save_to):
-
         sns.set()
         plt.rcParams.update({'font.size': 20})
         plt.figure(figsize=(14.0, 7.0))
-        #plt.figure(figsize=(18.0, 9.0))
 
         row_sums = np.asanyarray(confusion_matrix).sum(axis=1)
         matrix = confusion_matrix / row_sums[:, np.newaxis]
-        # matrix = [line.tolist() for line in matrix]
-        # g = sns.heatmap(matrix, annot=True, fmt='f', xticklabels=True, yticklabels=True)
         g = sns.heatmap(matrix, xticklabels=True, yticklabels=True, linewidths=.005, annot=True, fmt='.2f')
 
         g.set_yticklabels(["phishing", "legitimate"], rotation=0)
@@ -126,9 +121,6 @@ class Utils:
         TEST_RESULTS['date'] = tsm[0]
         TEST_RESULTS['date_time'] = tsm[1]
 
-        # TEST_RESULTS['epoch_history']['epoch_time'] = TEST_RESULTS['epoch_times']
-        # TEST_RESULTS.pop('epoch_times')
-
         TEST_RESULTS['epoch'] = params['epoch']
         mlflow.log_param("epoch", params['epoch'])
 
@@ -156,7 +148,6 @@ class Utils:
         self.plotter.plot_confusion_matrix(cm, save_to=dir_output)
         mlflow.log_artifact("{0}confusion_matrix.png".format(dir_output))
 
-        # TEST_RESULTS['model_json'] = model_json
         mlflow.log_artifact("{0}ph_model".format(dir_output))
 
         self.plotter.plot_graphs(TEST_RESULTS['epoch_history']['accuracy'],
@@ -166,8 +157,3 @@ class Utils:
                                  name2="val_acc",
                                  figure_name="accuracy")
         mlflow.log_artifact("{0}accuracy.png".format(dir_output))
-
-        """# saving embedding
-        embeddings = model.layers[0].get_weights()[0]
-        words_embeddings = {w: embeddings[idx].tolist() for w, idx in self.params['char_index'].items()}
-        open("{0}char_embeddings.json".format(dir_output), "w").write(json.dumps(words_embeddings))"""
